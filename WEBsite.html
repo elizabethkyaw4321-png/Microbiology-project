@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microbiology Project</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f2f6f7;
+      color: #222;
+    }
+
+    header {
+      background: #1f3b3b;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .page {
+      display: none;
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      margin-top: 20px;
+      border-radius: 12px;
+    }
+
+    .active {
+      display: block;
+    }
+
+    button {
+      background: #1f3b3b;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      margin-top: 20px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2e5c5c;
+    }
+
+    a {
+      color: #1f3b3b;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Microbiology Project</h1>
+</header>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+  <h2>Introduction</h2>
+  <p>
+    Hello! Our names are <b>Liz</b> and <b>Hana</b>.  
+    We are exploring microbiology and how microorganisms grow, spread, and affect everyday life.
+  </p>
+
+  <button onclick="nextPage(2)">Next: Our Goal & Procedure</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+  <h2>Goal & Procedure</h2>
+
+  <h3>Goal</h3>
+  <p>
+    Our goal is to observe and understand how bacteria grow under different conditions
+    and how contamination spreads in everyday environments.
+  </p>
+
+  <h3>Procedure</h3>
+  <p>
+    1. Collect samples from surfaces<br>
+    2. Observe bacterial growth under controlled conditions<br>
+    3. Record changes and patterns<br>
+    4. Analyze results and compare findings
+  </p>
+
+  <button onclick="nextPage(3)">Next: Submission Link</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+  <h2>Submission / Form</h2>
+
+  <p>
+    Click the link below to access our microbiology form:
+  </p>
+
+  <p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdWIEoTS0iDP7YCLJn3JtMK5xK4QthowZ5E96KTnVzuJ-ToXg/viewform?usp=header" target="_blank">
+      Open Google Form
+    </a>
+  </p>
+
+  <button onclick="nextPage(1)">Back to Start</button>
+</div>
+
+<script>
+  function nextPage(pageNumber) {
+    let pages = document.querySelectorAll(".page");
+    pages.forEach(p => p.classList.remove("active"));
+
+    document.getElementById("page" + pageNumber).classList.add("active");
+  }
+</script>
+
+</body>
+</html>
