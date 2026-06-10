@@ -1,122 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Microbiology Project</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microbiology Project</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f2f6f7;
-      color: #222;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+  overflow: hidden;
+}
 
-    header {
-      background: #1f3b3b;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+/* Progress bar */
+#progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  background: #00ffc3;
+  width: 0%;
+  transition: 0.4s;
+}
 
-    .page {
-      display: none;
-      padding: 40px;
-      max-width: 900px;
-      margin: auto;
-      background: white;
-      margin-top: 20px;
-      border-radius: 12px;
-    }
+/* Slides */
+.slide {
+  display: none;
+  height: 100vh;
+  padding: 40px;
+  box-sizing: border-box;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
 
-    .active {
-      display: block;
-    }
+.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    button {
-      background: #1f3b3b;
-      color: white;
-      border: none;
-      padding: 12px 18px;
-      margin-top: 20px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+.card {
+  background: rgba(255,255,255,0.08);
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 800px;
+  margin: auto;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(0,0,0,0.3);
+}
 
-    button:hover {
-      background: #2e5c5c;
-    }
+h1, h2 {
+  margin-bottom: 10px;
+}
 
-    a {
-      color: #1f3b3b;
-      font-weight: bold;
-    }
-  </style>
+p {
+  line-height: 1.6;
+}
+
+/* Buttons */
+.btn {
+  margin: 15px;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 10px;
+  background: #00ffc3;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #00cfa0;
+  transform: scale(1.05);
+}
+
+/* Links */
+.link-btn {
+  display: inline-block;
+  margin: 15px;
+  padding: 12px 20px;
+  background: #00aaff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.link-btn:hover {
+  background: #0088cc;
+}
+
+/* Step styling */
+.step {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(0,0,0,0.2);
+  border-left: 5px solid #00ffc3;
+  border-radius: 8px;
+}
+</style>
 </head>
 
 <body>
 
-<header>
-  <h1>Microbiology Project</h1>
-</header>
+<div id="progressBar"></div>
 
-<!-- PAGE 1 -->
-<div class="page active" id="page1">
-  <h2>Introduction</h2>
-  <p>
-    Hello! Our names are <b>Liz</b> and <b>Hana</b>.  
-    We are exploring microbiology and how microorganisms grow, spread, and affect everyday life.
-  </p>
-
-  <button onclick="nextPage(2)">Next: Our Goal & Procedure</button>
+<!-- INTRO -->
+<div class="slide active" id="slide1">
+  <div class="card">
+    <h1>🧫 Microbiology Project</h1>
+    <p><b>By Liz & Hana</b></p>
+    <p>
+      We are investigating how bacteria grows on food and testing whether the “5-second rule” is actually true.
+    </p>
+    <button class="btn" onclick="nextSlide(2)">Start</button>
+  </div>
 </div>
 
-<!-- PAGE 2 -->
-<div class="page" id="page2">
-  <h2>Goal & Procedure</h2>
-
-  <h3>Goal</h3>
-  <p>
-    Our goal is to observe and understand how bacteria grow under different conditions
-    and how contamination spreads in everyday environments.
-  </p>
-
-  <h3>Procedure</h3>
-  <p>
-    1. Collect samples from surfaces<br>
-    2. Observe bacterial growth under controlled conditions<br>
-    3. Record changes and patterns<br>
-    4. Analyze results and compare findings
-  </p>
-
-  <button onclick="nextPage(3)">Next: Submission Link</button>
+<!-- GOAL -->
+<div class="slide" id="slide2">
+  <div class="card">
+    <h2>🎯 Our Goal</h2>
+    <p>
+      Many people underestimate how quickly bacteria spreads.  
+      Our goal is to show how fast contamination happens and encourage better hygiene habits.
+    </p>
+    <button class="btn" onclick="prevSlide(1)">Back</button>
+    <button class="btn" onclick="nextSlide(3)">Next</button>
+  </div>
 </div>
 
-<!-- PAGE 3 -->
-<div class="page" id="page3">
-  <h2>Submission / Form</h2>
+<!-- PROCEDURES HUB -->
+<div class="slide" id="slide3">
+  <div class="card">
+    <h2>🧪 Procedure Overview</h2>
 
-  <p>
-    Click the link below to access our microbiology form:
-  </p>
+    <div class="step">Step 1: Make agar plates</div>
+    <div class="step">Step 2: Drop food + swab bacteria</div>
+    <div class="step">Step 3: Incubate samples</div>
+    <div class="step">Step 4: Gram stain</div>
+    <div class="step">Step 5: Observe under microscope</div>
 
-  <p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdWIEoTS0iDP7YCLJn3JtMK5xK4QthowZ5E96KTnVzuJ-ToXg/viewform?usp=header" target="_blank">
-      Open Google Form
+    <button class="btn" onclick="prevSlide(2)">Back</button>
+    <button class="btn" onclick="nextSlide(4)">Start Steps</button>
+  </div>
+</div>
+
+<!-- STEP 1 -->
+<div class="slide" id="slide4">
+  <div class="card">
+    <h2>Step 1: Agar Plates</h2>
+    <p>(You will add your explanation here)</p>
+
+    <button class="btn" onclick="prevSlide(3)">Back</button>
+    <button class="btn" onclick="nextSlide(5)">Next</button>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="slide" id="slide5">
+  <div class="card">
+    <h2>Step 2: Drop Food & Collect Bacteria</h2>
+    
+    <p>
+      We dropped food onto the floor for under 5 seconds to test the “5-second rule.”
+    </p>
+
+ <iframe
+    src="https://docs.google.com/videos/d/1C45jyTT0oOQKBBl9NF4K9ZteEVlXZfU2FByG4DJUMr4/edit?scene=id.p#scene=id.p"
+    width="100%"
+    height="450"
+    allow="autoplay">
+</iframe>
+    <p>
+      After picking the food up, we used a sterile swab to collect any bacteria that may have transferred from the surface. 
+      The swab was then used to inoculate our agar plates so we could observe bacterial growth.
+    </p>
+
+    <p>
+      This step helps us determine whether bacteria can transfer instantly, even with very short exposure times.
+    </p>
+
+    <button class="btn" onclick="prevSlide(4)">Back</button>
+    <button class="btn" onclick="nextSlide(6)">Next</button>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="slide" id="slide6">
+  <div class="card">
+    <h2>Step 3: Incubation</h2>
+    <p>(Explain incubation here)</p>
+
+    <button class="btn" onclick="prevSlide(5)">Back</button>
+    <button class="btn" onclick="nextSlide(7)">Next</button>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="slide" id="slide7">
+  <div class="card">
+    <h2>Step 4: Gram Staining</h2>
+    <p>(Explain staining here)</p>
+
+    <button class="btn" onclick="prevSlide(6)">Back</button>
+    <button class="btn" onclick="nextSlide(8)">Next</button>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="slide" id="slide8">
+  <div class="card">
+    <h2>Step 5: Microscope Observation</h2>
+    <p>(Explain what you saw here)</p>
+
+    <button class="btn" onclick="prevSlide(7)">Back</button>
+    <button class="btn" onclick="nextSlide(9)">Next</button>
+  </div>
+</div>
+
+<!-- FORMS -->
+<div class="slide" id="slide9">
+  <div class="card">
+    <h2>📋 Forms</h2>
+
+    <h3>Before Visiting</h3>
+    <a class="link-btn"
+    href="https://docs.google.com/forms/d/e/1FAIpQLSdWIEoTS0iDP7YCLJn3JtMK5xK4QthowZ5E96KTnVzuJ-ToXg/viewform?usp=header"
+    target="_blank">
+    Before Visit Form
     </a>
-  </p>
 
-  <button onclick="nextPage(1)">Back to Start</button>
+    <h3>After Visiting</h3>
+    <a class="link-btn"
+    href="https://docs.google.com/forms/d/e/1FAIpQLSegsgdUVe6ScWch-mlLrYE1MwDWg-xclG4QuhpY5ny08yuN_g/viewform"
+    target="_blank">
+    After Visit Form
+    </a>
+
+    <br>
+    <button class="btn" onclick="nextSlide(1)">Restart</button>
+  </div>
 </div>
 
 <script>
-  function nextPage(pageNumber) {
-    let pages = document.querySelectorAll(".page");
-    pages.forEach(p => p.classList.remove("active"));
+let totalSlides = 9;
 
-    document.getElementById("page" + pageNumber).classList.add("active");
-  }
+function nextSlide(num) {
+  showSlide(num);
+}
+
+function prevSlide(num) {
+  showSlide(num);
+}
+
+function showSlide(num) {
+  document.querySelectorAll(".slide").forEach(s => s.classList.remove("active"));
+  document.getElementById("slide" + num).classList.add("active");
+
+  let progress = (num - 1) / (totalSlides - 1) * 100;
+  document.getElementById("progressBar").style.width = progress + "%";
+}
 </script>
 
 </body>
